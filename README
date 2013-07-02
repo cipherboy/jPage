@@ -1,0 +1,78 @@
+jPage v1.0 - A dynamic jQuery multi-page library
+Depends: jQuery >= 1.5
+
+Copyright (C) 2011, 2013 Alex Scheel
+All rights reserved.
+Licensed under BSD 2 Clause License:
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+- Redistributions of source code must retain the above copyright notice,
+  this list of conditions and the following disclaimer.
+- Redistributions in binary form must reproduce the above copyright notice, 
+  this list of conditions and the following disclaimer in the documentation 
+  and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+
+A dynamic jQuery multi-page library
+
+Usage:
+  var page = new jPage();
+  page.init('div-page-id');
+  page.setPages(['#hash', 'name', 'title', '/url/to/page', true], '#hash');
+  page.setNavigation('anav', 'ul');
+  page.setBasepath('/containing/folder');
+  page.load();
+  
+API:
+  Main:
+    init(pelement) - Set container element for jPage
+    
+    load() - Starts jPage, loads data, displays
+    
+  Config:
+    setPages(pages-as-array, starting-hash) - Sets pages, starting hash
+    
+    setNavigation(nelement, navtype) - Sets navigation element, type
+    
+    setBasepath(bpath) - Prefix urls of page with base path
+    
+    setStorage(name, value) - Sets internal storage option
+    
+  Getters:
+    getPositionFromHash(hash) - Returns id of hash
+    
+    getNavigation() - returns rendered navigation
+    
+    getPage()  - gets current page, synchronous ly
+    
+    getPageTitle() - gets page title
+    
+  Internal:
+    setPage()
+    
+    showPage()
+    
+    hidePage()
+    
+    toPageByHash(hash)
+    
+    toPageById(hash)
+    
+    Events:
+      eventChangePage(event)
+      bindEvents()
+      unbindEvents()
+
