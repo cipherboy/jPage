@@ -60,6 +60,8 @@
  *     getPage()  - gets current page, synchronous ly
  *     
  *     getPageTitle() - gets page title
+ *
+ *     getStorage(name) - gets value from storage
  *     
  *   Internal:
  *     setPage()
@@ -157,6 +159,10 @@ function jPage() {
     
     this.getPageTitle = function() {
         return this.pages[this.cpage][2];
+    }
+    
+    this.getStorage = function(name) {
+        return this.storage[name];
     }
     
     this.setPage = function() {
