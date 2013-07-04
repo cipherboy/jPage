@@ -149,6 +149,8 @@ function jPage() {
                 var npos = this.pages[this.cpage][3][1][pos];
                 if (data == "") {
                     data = "?" + npos + "=" + this.storage[npos];
+                } else {
+                    data += "&" + npos + "=" + this.storage[npos];
                 }
             }
         }
