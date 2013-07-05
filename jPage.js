@@ -202,7 +202,9 @@ function jPage() {
     }
     
     this.eventChangeHash = function(event) {
-        event.data.instance.toPageByHash(location.hash);
+        if (location.hash != event.data.instance.pages[event.data.instance.cpage][0]) {
+            event.data.instance.toPageByHash(location.hash);
+        }
     }
     
     this.eventChangePage = function(event) {
