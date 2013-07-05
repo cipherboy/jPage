@@ -57,7 +57,7 @@
  *     
  *     getNavigation() - returns rendered navigation
  *     
- *     getPage()  - gets current page, synchronous ly
+ *     getPage()  - gets current page, synchronously
  *     
  *     getPageTitle() - gets page title
  *
@@ -201,12 +201,20 @@ function jPage() {
         this.setPage();
     }
     
+    this.eventChangeHash = function(event) {
+        event.data.instance.toPageByHash(location.hash);
+    }
+    
     this.eventChangePage = function(event) {
         event.data.instance.toPageById(event.data.element)
     }
     
     this.bindEvents = function() {
         this.unbindEvents();
+        
+        if ("onhashchange" in window) {
+            $(window).on('hashchange', { instance: this }, this.eventChangeHash);
+        }
         
         for (var pos in this.pages) {
             var hash = this.pages[pos][0];
@@ -219,6 +227,10 @@ function jPage() {
     }
     
     this.unbindEvents = function() {
+        if ("onhashchange" in window) {
+            $(window).off('hashchange');
+        }
+        
         for (var pos in this.pages) {
             var hash = this.pages[pos][0];
             var required = this.pages[pos][4];
